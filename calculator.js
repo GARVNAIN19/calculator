@@ -1,9 +1,7 @@
-let display = document.getElementById('display');
-let buttons = document.querySelectorAll('#keys button');
+let display = document.getElementById("display");
 
-function displaytext(value) {
+function displayValue(value) {
     display.value += value;
-    console.log('Value:', value);
 }
 
 function clearDisplay() {
@@ -11,25 +9,5 @@ function clearDisplay() {
 }
 
 function calculate() {
-    try {
-        display.value = eval(display.value);
-    } catch (error) {
-        display.value = "Error";
-        console.error('Calculation error:', error);
-    }
+    display.value = eval(display.value);
 }
-
-buttons.forEach(button => {
-    button.addEventListener('click', () => {
-        const value = button.textContent.trim();
-
-        if (value === 'C') {
-            clearDisplay();
-        } else if (value === '=') {
-            calculate();
-        } else {
-            displaytext(value);
-        }
-    });
-});
-    
